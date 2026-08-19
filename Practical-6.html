@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <!-- Tailwind CSS Link (Internet connection required) -->
+    <script src="https://tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-500 via-blue-300 to-purple-100 text-gray-600 min-h-screen p-8">
+    <div>
+        <h1>Practical 6</h1>
+        <h3>Marks Calculator</h3>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>SUBJECTS</th>
+                <th>MARKS</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>DMGT</td>
+                <td><input type="number" id="S1" placeholder="Enter Marks"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>MDM WD</td>
+                <td><input type="number" id="S2" placeholder="Enter Marks"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>CAO</td>
+                <td><input type="number" id="S3" placeholder="Enter Marks"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>ES</td>
+                <td><input type="number" id="S4" placeholder="Enter Marks"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>ED</td>
+                <td><input type="number" id="S5" placeholder="Enter Marks"></td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" onclick="Calc()">CALCULATE</button>
+                </td>
+            </tr>
+
+        </table>
+        <h1>TOTAL MARKS</h1>
+        <h1 id="totalMarks" class="text-xl font-bold"></h1>
+        <br>
+        <h1>Percentage</h1>
+        <!-- 1. HTML MEIN ID "percent" SET KAR DI -->
+        <h1 id="percent" class="text-xl font-bold"></h1>
+        <br>
+        <h1>Grade</h1>
+        <h1 id="grade" class="text-xl font-bold"></h1>
+
+    </div>
+    <br><br>
+    <script>
+        function Calc() {
+            let sub1 = Number(document.getElementById("S1").value);
+            let sub2 = Number(document.getElementById("S2").value);
+            let sub3 = Number(document.getElementById("S3").value);
+            let sub4 = Number(document.getElementById("S4").value);
+            let sub5 = Number(document.getElementById("S5").value);
+            
+            let total = sub1 + sub2 + sub3 + sub4 + sub5;
+            let per = (total / 500) * 100;
+            
+            let GRADE = "F"; 
+
+            if (per >= 75) {
+                GRADE = "A";
+            } else if (per >= 60 && per < 75) {
+                GRADE = "B";
+            } else if (per >= 50 && per < 60) {
+                GRADE = "C";
+            } else if (per >= 45 && per < 50) {
+                GRADE = "D";
+            } else {
+                GRADE = "Fail";
+            }
+
+            document.getElementById("totalMarks").innerText = total;
+            
+            // 2. AAPKI PASAND KI LINE LINE YAHAAN LIKH DI HAI
+            document.getElementById("percent").innerText = per + "%";
+            
+            document.getElementById("grade").innerText = GRADE;
+        }
+    </script>
+</body>
+
+</html>
